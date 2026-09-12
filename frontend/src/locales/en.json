@@ -1,0 +1,158 @@
+{
+  "app_name": "AgriQueue",
+  "department_title": "Department of Consumer Affairs",
+  "ministry_title": "Ministry of Consumer Affairs, Food & Public Distribution",
+  "nav": {
+    "home": "Home",
+    "live_queue": "Live Queue Board",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "register": "Farmer Register",
+    "logout": "Logout",
+    "language": "Language"
+  },
+  "roles": {
+    "farmer": "Farmer",
+    "staff": "Centre Staff",
+    "manager": "Centre Manager",
+    "admin": "Govt Admin"
+  },
+  "menu": {
+    "dashboard": "Dashboard Overview",
+    "farmer": {
+      "schedule": "My Slot Schedule",
+      "my_token": "My Active Token Pass",
+      "live_queue": "Live Centre Queue",
+      "find_centre": "Find Procurement Centre",
+      "track": "Track Procurement",
+      "history": "Procurement History",
+      "payments": "DBT Payment Status",
+      "help_voice": "Help & Voice Assistant"
+    },
+    "staff": {
+      "todays_queue": "Today's Queue Roster",
+      "token_mgmt": "Token Check-In & Priority",
+      "call_next": "Call Next Farmer",
+      "quality_check": "Crop Quality Grading",
+      "weighing": "Weighment Counter",
+      "procurement": "Procurement Entry Screen",
+      "farmer_records": "Farmer Registry & Records",
+      "notifications": "SMS & Alert Logs"
+    },
+    "manager": {
+      "centre_overview": "Centre & Slot Config",
+      "staff_mgmt": "Staff & Shift Roster",
+      "queue_monitoring": "Live Queue Monitor",
+      "procurement_overview": "Centre Procurement Logs",
+      "payment_overview": "DBT Payment Approvals",
+      "centre_performance": "Performance Analytics",
+      "reports": "Exportable Centre Reports"
+    },
+    "admin": {
+      "all_centres": "All Procurement Centres",
+      "all_farmers": "National Farmer Registry",
+      "procurement_analytics": "National Crop Analytics",
+      "payment_monitoring": "DBT Payment Backlogs",
+      "centre_performance": "Centre Performance Ranks",
+      "regional_analytics": "State & Regional Analytics",
+      "reports": "National System Reports",
+      "system_mgmt": "System Health & Management"
+    }
+  },
+  "home": {
+    "hero_title": "Smart Crop Procurement & Live Queue Management",
+    "hero_subtitle": "Eliminating waiting times at procurement centres. Book your slot online, track live token status, and monitor direct bank payment status transparently.",
+    "book_slot_now": "Book Procurement Slot",
+    "view_live_queue": "View Live Queue Status",
+    "features_title": "Key Platform Benefits",
+    "feat1_title": "Zero Queue Wait Times",
+    "feat1_desc": "Arrive at your assigned centre exact on your token slot time.",
+    "feat2_title": "SMS & Live Alerts",
+    "feat2_desc": "Receive direct SMS notifications in your regional language when your turn is ready.",
+    "feat3_title": "Transparent Direct Payment",
+    "feat3_desc": "Real-time updates on crop weighment, quality grading, and direct bank transfer status.",
+    "map_heading": "Mandi Centres Across India",
+    "map_subtitle": "View all {{count}} active procurement centres on the map",
+    "map_popup_code": "Centre Code",
+    "map_popup_capacity": "Capacity",
+    "map_popup_crops": "Supported Crops",
+    "map_popup_contact": "Contact",
+    "map_popup_book_slot": "Book Slot Here"
+  },
+  "farmer": {
+    "book_slot_title": "Book Procurement Slot",
+    "select_centre": "Select Procurement Centre",
+    "select_date": "Select Booking Date",
+    "select_crop": "Select Crop Type",
+    "estimated_qty": "Estimated Quantity (Quintals)",
+    "available_slots": "Available Time Slots",
+    "confirm_booking": "Confirm & Generate Token",
+    "my_tickets": "My Procurement Tokens",
+    "no_tickets": "No active procurement bookings found.",
+    "token_no": "Token Number",
+    "slot_time": "Slot Time",
+    "status": "Current Status",
+    "action": "Action",
+    "cancel": "Cancel Booking",
+    "payment_history": "My Payment Status Logs"
+  },
+  "staff": {
+    "dashboard_title": "Centre Operational Control & Weighment Counter",
+    "checkin_section": "Farmer Ticket Check-In",
+    "enter_token": "Enter Token Number or Scan QR",
+    "checkin_btn": "Check In Farmer",
+    "call_next_btn": "Call Next Token",
+    "record_procurement": "Record Crop Inspection & Weighment",
+    "actual_qty": "Actual Quantity (Quintals)",
+    "quality_grade": "Quality Grade",
+    "moisture": "Moisture Content (%)",
+    "msp_price": "MSP Price (₹/Quintal)",
+    "calculated_amount": "Total Calculated Payment",
+    "submit_weighment": "Submit Weighment Entry"
+  },
+  "manager": {
+    "dashboard_title": "Centre Manager Portal & Payment Approvals",
+    "capacity_mgmt": "Daily Slot & Capacity Management",
+    "payment_approvals": "Pending Payment Approvals",
+    "approve_btn": "Approve Payment",
+    "process_btn": "Process Direct Bank Payment",
+    "centre_metrics": "Today's Procurement Summary"
+  },
+  "admin": {
+    "dashboard_title": "National / State Procurement Command Center",
+    "total_centres": "Total Active Centres",
+    "total_farmers": "Registered Farmers",
+    "procurement_volume": "Total Volume Procured",
+    "disbursed_value": "Total Payment Disbursed",
+    "quality_report": "Quality Grade Breakdown",
+    "manage_centres": "Procurement Centres Registry"
+  },
+  "queue": {
+    "live_board_title": "Real-Time Procurement Queue Board",
+    "select_centre_prompt": "Select a centre to view today's live queue status",
+    "currently_serving": "NOW SERVING TOKEN",
+    "waiting_in_queue": "Checked-In & Waiting",
+    "upcoming_tokens": "Scheduled Today",
+    "completed_today": "Completed Today",
+    "token": "Token",
+    "farmer_name": "Farmer",
+    "crop": "Crop",
+    "est_qty": "Qty (Qtl)",
+    "slot": "Slot"
+  },
+  "auth": {
+    "login_title": "System Login",
+    "phone": "Phone Number",
+    "password": "Password",
+    "role_select": "Select Role",
+    "login_btn": "Sign In",
+    "register_title": "Farmer Registration",
+    "full_name": "Full Name",
+    "village": "Village Name",
+    "district": "District",
+    "state": "State",
+    "land_area": "Land Area (Acres)",
+    "preferred_lang": "SMS / App Language Preference",
+    "register_btn": "Register Account"
+  }
+}

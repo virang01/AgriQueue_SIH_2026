@@ -1,0 +1,158 @@
+{
+  "app_name": "एग्रीक्यू (AgriQueue)",
+  "department_title": "उपभोक्ता मामले विभाग",
+  "ministry_title": "उपभोक्ता मामले, खाद्य और सार्वजनिक वितरण मंत्रालय",
+  "nav": {
+    "home": "मुख्य पृष्ठ",
+    "live_queue": "लाइव कतार बोर्ड",
+    "dashboard": "डैशबोर्ड",
+    "login": "लॉग इन",
+    "register": "किसान पंजीकरण",
+    "logout": "लॉग आउट",
+    "language": "भाषा"
+  },
+  "roles": {
+    "farmer": "किसान",
+    "staff": "केंद्र कर्मचारी",
+    "manager": "केंद्र प्रबंधक",
+    "admin": "सरकारी प्रशासक"
+  },
+  "menu": {
+    "dashboard": "डैशबोर्ड अवलोकन",
+    "farmer": {
+      "schedule": "मेरा स्लॉट अनुसूची",
+      "my_token": "मेरा टोकन पास",
+      "live_queue": "लाइव केंद्र कतार",
+      "find_centre": "खरीद केंद्र खोजें",
+      "track": "खरीद ट्रैक करें",
+      "history": "खरीद इतिहास",
+      "payments": "डीबीटी भुगतान स्थिति",
+      "help_voice": "सहायता एवं वॉइस सहायक"
+    },
+    "staff": {
+      "todays_queue": "आज की कतार सूची",
+      "token_mgmt": "टोकन चेक-इन एवं प्राथमिकता",
+      "call_next": "अगले किसान को बुलाएं",
+      "quality_check": "फसल गुणवत्ता जांच",
+      "weighing": "तौल काउं​टर",
+      "procurement": "खरीद प्रविष्टि स्क्रीन",
+      "farmer_records": "किसान रिकॉर्ड्स",
+      "notifications": "एसएमएस एवं अलर्ट लॉग"
+    },
+    "manager": {
+      "centre_overview": "केंद्र एवं स्लॉट विन्यास",
+      "staff_mgmt": "कर्मचारी प्रबंधन",
+      "queue_monitoring": "लाइव कतार निगरानी",
+      "procurement_overview": "केंद्र खरीद लॉग्स",
+      "payment_overview": "डीबीटी भुगतान स्वीकृति",
+      "centre_performance": "प्रदर्शन विश्लेषण",
+      "reports": "निर्यात योग्य रिपोर्ट"
+    },
+    "admin": {
+      "all_centres": "सभी खरीद केंद्र",
+      "all_farmers": "राष्ट्रीय किसान रजिस्टर",
+      "procurement_analytics": "राष्ट्रीय फसल विश्लेषण",
+      "payment_monitoring": "डीबीटी भुगतान बैकलाग",
+      "centre_performance": "केंद्र प्रदर्शन रैंक",
+      "regional_analytics": "राज्य एवं क्षेत्रीय विश्लेषण",
+      "reports": "राष्ट्रीय प्रणाली रिपोर्ट",
+      "system_mgmt": "प्रणाली स्वास्थ्य एवं प्रबंधन"
+    }
+  },
+  "home": {
+    "hero_title": "स्मार्ट फसल खरीद एवं लाइव कतार प्रबंधन",
+    "hero_subtitle": "खरीद केंद्रों पर इंतजार के समय का खात्मा। ऑनलाइन स्लॉट बुक करें, लाइव टोकन स्थिति ट्रैक करें और पारदर्शी बैंक भुगतान प्राप्त करें।",
+    "book_slot_now": "खरीद स्लॉट बुक करें",
+    "view_live_queue": "लाइव कतार स्थिति देखें",
+    "features_title": "प्लेटफॉर्म के मुख्य लाभ",
+    "feat1_title": "शून्य कतार इंतजार समय",
+    "feat1_desc": "अपने टोकन स्लॉट समय पर सीधे केंद्र पहुंचे।",
+    "feat2_title": "एसएमएस एवं लाइव अलर्ट",
+    "feat2_desc": "आपकी बारी आने पर अपनी भाषा में सीधा एसएमएस प्राप्त करें।",
+    "feat3_title": "पारदर्शी प्रत्यक्ष बैंक भुगतान",
+    "feat3_desc": "तौल, गुणवत्ता ग्रेडिंग और डीबीटी स्थिति का वास्तविक समय का अपडेट।",
+    "map_heading": "भारत भर में मंडी और खरीद केंद्र",
+    "map_subtitle": "मानचित्र पर सभी {{count}} सक्रिय खरीद केंद्रों को देखें",
+    "map_popup_code": "केंद्र कोड",
+    "map_popup_capacity": "क्षमता",
+    "map_popup_crops": "समर्थित फसलें",
+    "map_popup_contact": "संपर्क",
+    "map_popup_book_slot": "यहाँ स्लॉट बुक करें"
+  },
+  "farmer": {
+    "book_slot_title": "खरीद स्लॉट बुक करें",
+    "select_centre": "खरीद केंद्र चुनें",
+    "select_date": "बुकिंग तिथि चुनें",
+    "select_crop": "फसल का प्रकार चुनें",
+    "estimated_qty": "अनुमानित मात्रा (क्विंटल)",
+    "available_slots": "उपलब्ध समय स्लॉट",
+    "confirm_booking": "पुष्टि करें और टोकन प्राप्त करें",
+    "my_tickets": "मेरे खरीद टोकन",
+    "no_tickets": "कोई सक्रिय खरीद बुकिंग नहीं मिली।",
+    "token_no": "टोकन संख्या",
+    "slot_time": "स्लॉट समय",
+    "status": "वर्तमान स्थिति",
+    "action": "कार्रवाई",
+    "cancel": "बुकिंग रद्द करें",
+    "payment_history": "मेरा भुगतान इतिहास"
+  },
+  "staff": {
+    "dashboard_title": "केंद्र काउं​टर एवं तौल संचालन नियंत्रण",
+    "checkin_section": "किसान टिकट चेक-इन",
+    "enter_token": "टोकन नंबर दर्ज करें या क्यूआर स्कैन करें",
+    "checkin_btn": "किसान चेक-इन करें",
+    "call_next_btn": "अगला टोकन बुलाएं",
+    "record_procurement": "फसल निरीक्षण एवं तौल दर्ज करें",
+    "actual_qty": "वास्तविक मात्रा (क्विंटल)",
+    "quality_grade": "गुणवत्ता ग्रेड",
+    "moisture": "नमी सामग्री (%)",
+    "msp_price": "एमएसपी दर (₹/क्विंटल)",
+    "calculated_amount": "कुल परिकलित भुगतान",
+    "submit_weighment": "तौल प्रविष्टि जमा करें"
+  },
+  "manager": {
+    "dashboard_title": "केंद्र प्रबंधक पोर्टल एवं भुगतान स्वीकृति",
+    "capacity_mgmt": "दैनिक स्लॉट एवं क्षमता प्रबंधन",
+    "payment_approvals": "लंबित भुगतान स्वीकृतियां",
+    "approve_btn": "भुगतान स्वीकृत करें",
+    "process_btn": "प्रत्यक्ष बैंक भुगतान प्रेषित करें",
+    "centre_metrics": "आज का खरीद सारांश"
+  },
+  "admin": {
+    "dashboard_title": "राष्ट्रीय / राज्य खरीद कमान केंद्र",
+    "total_centres": "कुल सक्रिय केंद्र",
+    "total_farmers": "पंजीकृत किसान",
+    "procurement_volume": "कुल खरीदी गई मात्रा",
+    "disbursed_value": "कुल संवितरित भुगतान",
+    "quality_report": "गुणवत्ता ग्रेड विवरण",
+    "manage_centres": "खरीद केंद्र रजिस्टर"
+  },
+  "queue": {
+    "live_board_title": "वास्तविक समय खरीद कतार बोर्ड",
+    "select_centre_prompt": "आज की लाइव स्थिति देखने के लिए केंद्र चुनें",
+    "currently_serving": "वर्तमान टोकन सेवा में",
+    "waiting_in_queue": "चेक-इन और प्रतीक्षा में",
+    "upcoming_tokens": "आज के लिए निर्धारित",
+    "completed_today": "आज पूर्ण हुए",
+    "token": "टोकन",
+    "farmer_name": "किसान",
+    "crop": "फसल",
+    "est_qty": "मात्रा (क्विंटल)",
+    "slot": "स्लॉट"
+  },
+  "auth": {
+    "login_title": "प्रणाली लॉग इन",
+    "phone": "फोन नंबर",
+    "password": "पासवर्ड",
+    "role_select": "भूमिका चुनें",
+    "login_btn": "साइन इन करें",
+    "register_title": "किसान पंजीकरण",
+    "full_name": "पूरा नाम",
+    "village": "गांव का नाम",
+    "district": "जिला",
+    "state": "राज्य",
+    "land_area": "भूमि क्षेत्र (एकड़)",
+    "preferred_lang": "एसएमएस / ऐप भाषा वरीयता",
+    "register_btn": "खाता पंजीकृत करें"
+  }
+}

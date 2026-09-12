@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Typography Variables */
+  --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
+  --font-body: 'Noto Sans', system-ui, -apple-system, sans-serif;
+
+  /* Color Palette Tokens */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-accent-primary: #c62828;
+  --color-accent-primary-hover: #a81f1f;
+  --color-accent-primary-light: #fdecea;
+  --color-status-success: #2e7d32;
+  --color-status-success-light: #e8f5e9;
+  --color-status-warning: #f9a825;
+  --color-status-warning-light: #fff8e1;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #5f6368;
+  --color-border: #e0e0e0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Button Utilities & Smooth Interactivity */
+.btn-primary-red {
+  background-color: #c62828 !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(198, 40, 40, 0.3) !important;
+  transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.btn-primary-red:hover {
+  background-color: #a81f1f !important;
+  transform: translateY(-1.5px) scale(1.02) !important;
+  box-shadow: 0 4px 14px rgba(198, 40, 40, 0.38) !important;
+}
+.btn-primary-red:active {
+  transform: translateY(0) scale(0.99) !important;
+}
+
+.btn-secondary-red {
+  background-color: #ffffff !important;
+  border: 1.5px solid #c62828 !important;
+  color: #c62828 !important;
+  transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.btn-secondary-red:hover {
+  background-color: #fdecea !important;
+  color: #c62828 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(198, 40, 40, 0.12) !important;
+}
+.btn-secondary-red:active {
+  transform: translateY(0) !important;
+}
+
+/* Badge Utilities */
+.badge-red-light {
+  background-color: #fdecea !important;
+  color: #c62828 !important;
+}
+
+.badge-green-light {
+  background-color: #e8f5e9 !important;
+  color: #2e7d32 !important;
+}
+
+.badge-amber-light {
+  background-color: #fff8e1 !important;
+  color: #b78103 !important;
+}
+
+/* Card Resting & Hover Elevate Effect */
+.card-hover-elevate {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.card-hover-elevate:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09) !important;
+}
+
+/* Hero Depth & Drop Shadow */
+.hero-container-shadow {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Navbar Shadow Divider */
+.nav-shadow-divider {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Fade-In Up Keyframe Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c62828;
+}
+
+/* Leaflet Custom Popup Styling */
+.custom-gov-popup .leaflet-popup-content-wrapper {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  padding: 4px;
+}
+.custom-gov-popup .leaflet-popup-tip {
+  background: #ffffff;
+}
+.custom-gov-popup .leaflet-popup-content {
+  margin: 10px 12px;
+  line-height: 1.4;
+}
+.custom-mandi-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+
