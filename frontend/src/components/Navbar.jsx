@@ -47,22 +47,20 @@ const Navbar = () => {
             <Globe className="w-3.5 h-3.5 text-gov-red ml-1" />
             <button
               onClick={() => handleLanguageToggle('hi')}
-              className={`px-3 py-1 rounded-lg font-heading transition-all duration-200 ${
-                i18n.language?.startsWith('hi')
-                  ? 'bg-red-100 border border-red-300 text-[#c62828] font-black shadow-2xs'
-                  : 'text-slate-900 font-bold hover:text-[#c62828] hover:bg-slate-100'
-              }`}
+              className={`px-3 py-1 font-heading transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gov-red after:rounded-full after:transition-all after:duration-300 ${i18n.language?.startsWith('hi')
+                  ? 'text-[#c62828] font-black after:w-full'
+                  : 'text-slate-900 font-bold hover:text-[#c62828] after:w-0 hover:after:w-full'
+                }`}
             >
               हिन्दी
             </button>
             <span className="text-slate-400 font-bold">/</span>
             <button
               onClick={() => handleLanguageToggle('en')}
-              className={`px-3 py-1 rounded-lg font-heading transition-all duration-200 ${
-                !i18n.language?.startsWith('hi')
-                  ? 'bg-red-100 border border-red-300 text-[#c62828] font-black shadow-2xs'
-                  : 'text-slate-900 font-bold hover:text-[#c62828] hover:bg-slate-100'
-              }`}
+              className={`px-3 py-1 font-heading transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gov-red after:rounded-full after:transition-all after:duration-300 ${!i18n.language?.startsWith('hi')
+                  ? 'text-[#c62828] font-black after:w-full'
+                  : 'text-slate-900 font-bold hover:text-[#c62828] after:w-0 hover:after:w-full'
+                }`}
             >
               English
             </button>
@@ -90,53 +88,80 @@ const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <nav className="hidden md:flex items-center space-x-6 font-heading">
-            <Link
-              to="/"
-              className={`text-sm font-semibold transition-all relative py-1.5 ${location.pathname === '/' ? 'text-gov-red font-bold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-gov-red after:rounded-full' : 'text-gov-text hover:text-gov-red'}`}
-            >
-              {t('nav.home')}
-            </Link>
+            {(() => {
+              const getNavLinkClass = (path, isDashboard = false) => {
+                const isActive = isDashboard
+                  ? location.pathname.startsWith('/dashboard')
+                  : location.pathname === path;
 
+                const base = "text-sm font-semibold relative py-1.5 transition-all after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2.5px] after:bg-gov-red after:rounded-full after:transition-all after:duration-300";
 
-            {isAuthenticated ? (
-              <>
-                <Link
-                  to="/dashboard"
-                  className={`text-sm font-semibold transition-all relative py-1.5 ${location.pathname.startsWith('/dashboard') ? 'text-gov-red font-bold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-gov-red after:rounded-full' : 'text-gov-text hover:text-gov-red'}`}
-                >
-                  {t('nav.dashboard')}
-                </Link>
-                <div className="flex items-center space-x-3 bg-gov-gray px-3.5 py-1.5 rounded-xl border border-gov-border shadow-xs">
-                  <User className="w-4 h-4 text-gov-red" />
-                  <div className="text-left font-body">
-                    <div className="text-xs font-bold text-gov-text leading-none">{user.name}</div>
-                    <div className="mt-0.5">{getRoleBadge(user.role)}</div>
-                  </div>
-                  <button
-                    onClick={handleLogout}
-                    title={t('nav.logout')}
-                    className="p-1 text-gov-muted hover:text-gov-red transition-colors"
+                return isActive
+                  ? `${base} text-gov-red font-bold after:w-full`
+                  : `${base} text-gov-text hover:text-gov-red after:w-0 hover:after:w-full`;
+              };
+
+              return (
+                <>
+                  <Link
+                    to="/"
+                    className={getNavLinkClass('/')}
                   >
-                    <LogOut className="w-4 h-4" />
-                  </button>
-                </div>
-              </>
-            ) : (
-              <div className="flex items-center space-x-3 font-heading">
-                <Link
-                  to="/login"
-                  className="text-sm font-semibold text-gov-text hover:text-gov-red px-3 py-2 rounded-md transition-colors"
-                >
-                  {t('nav.login')}
-                </Link>
-                <Link
-                  to="/register"
-                  className="text-sm font-bold btn-primary-red px-4 py-2 rounded-lg font-heading shadow-xs"
-                >
-                  {t('nav.register')}
-                </Link>
-              </div>
-            )}
+                    {t('nav.home')}
+                  </Link>
+
+                  {isAuthenticated ? (
+                    <>
+                      <Link
+                        to="/dashboard"
+                        className={getNavLinkClass('/dashboard', true)}
+                      >
+                        {t('nav.dashboard')}
+                      </Link>
+                      <div className="flex items-center ml-4 bg-red-50/60 px-3 py-1.5 rounded-xl border border-gov-border border-l-2 border-l-gov-red shadow-sm font-body">
+                        {/* Avatar */}
+                        <div className="w-8 h-8 rounded-full bg-white border border-gov-red/30 flex items-center justify-center font-bold text-xs text-gov-red font-heading flex-shrink-0 shadow-2xs">
+                          {user.name ? user.name.charAt(0).toUpperCase() : <User className="w-4 h-4 text-gov-red" />}
+                        </div>
+
+                        {/* Name & Role Badge inline */}
+                        <div className="flex items-center ml-2.5">
+                          <span className="text-sm font-bold text-gov-text whitespace-nowrap">{user.name}</span>
+                          <span className="ml-2 inline-flex items-center">{getRoleBadge(user.role)}</span>
+                        </div>
+
+                        {/* Vertical Divider */}
+                        <div className="h-6 w-px bg-gov-border mx-3 flex-shrink-0" />
+
+                        {/* Logout Button */}
+                        <button
+                          onClick={handleLogout}
+                          title={t('nav.logout')}
+                          className="p-1 text-gov-muted hover:text-gov-red transition-colors flex items-center justify-center flex-shrink-0"
+                        >
+                          <LogOut className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex items-center space-x-6 font-heading">
+                      <Link
+                        to="/login"
+                        className={getNavLinkClass('/login')}
+                      >
+                        {t('nav.login')}
+                      </Link>
+                      <Link
+                        to="/register"
+                        className={getNavLinkClass('/register')}
+                      >
+                        {t('nav.register')}
+                      </Link>
+                    </div>
+                  )}
+                </>
+              );
+            })()}
           </nav>
 
           {/* Mobile menu button */}

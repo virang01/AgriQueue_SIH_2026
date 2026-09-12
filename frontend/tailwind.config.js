@@ -23,6 +23,9 @@ export default {
         heading: ['Poppins', 'system-ui', 'sans-serif'],
         body: ['Noto Sans', 'system-ui', 'sans-serif'],
       },
+      spacing: {
+        navbar: 'var(--navbar-height, 104px)',
+      },
     },
   },
   plugins: [],

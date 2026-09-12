@@ -26,7 +26,7 @@ export const DashboardLayout = ({ children, title, subtitle }) => {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-65px)] bg-slate-50 font-body">
+    <div className="flex min-h-[calc(100vh-var(--navbar-height,104px))] bg-slate-50 font-body">
       {/* Role Sidebar */}
       <Sidebar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
 

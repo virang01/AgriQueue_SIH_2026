@@ -16,10 +16,11 @@
   --color-status-success: #2e7d32;
   --color-status-success-light: #e8f5e9;
   --color-status-warning: #f9a825;
-  --color-status-warning-light: #fff8e1;
   --color-text-primary: #1a1a1a;
   --color-text-secondary: #5f6368;
   --color-border: #e0e0e0;
+  /* Layout Dimensions */
+  --navbar-height: 104px;
 }
 
 body {
@@ -97,7 +98,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 /* Hero Depth & Drop Shadow */
 .hero-container-shadow {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.28), 0 8px 24px -4px rgba(198, 40, 40, 0.12) !important;
 }
 
 /* Navbar Shadow Divider */

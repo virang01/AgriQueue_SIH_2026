@@ -16,6 +16,22 @@ const HomePage = () => {
   const [selectedCentreId, setSelectedCentreId] = useState('');
   const [queueData, setQueueData] = useState(null);
   const [loadingQueue, setLoadingQueue] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Royalty-free background images representing Indian agriculture, mandi grain mandis, harvest, and weighing
+  const heroImages = [
+    'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1400&q=80', // Golden wheat harvest field & grains
+    'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1400&q=80', // Rural farming landscape & crops
+    'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=1400&q=80', // Indian agricultural fields & golden crops
+    'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=1400&q=80', // Grains, harvest procurement & agriculture
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
 
   useEffect(() => {
     axios
@@ -61,42 +77,58 @@ const HomePage = () => {
 
   return (
     <div className="space-y-16 sm:space-y-20 font-body text-gov-text bg-white pb-16">
-      {/* 1. Hero Section: Depth, Subtle Gradient, Decorative Blurred Red Corner, Hero Container Drop Shadow */}
-      <section className="relative bg-gradient-to-br from-white via-red-50/20 to-[#FDF6F6] border border-gov-border rounded-2xl p-8 sm:p-12 hero-container-shadow max-w-7xl mx-auto my-8 overflow-hidden animate-fade-in-up">
-        {/* Soft Decorative Blurred Red Circle Corner Shape */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-red-200/25 rounded-full blur-3xl pointer-events-none"></div>
+      {/* 1. Hero Section: Vivid Photography, Dark Gradient Scrim, High Contrast Typography */}
+      <section className="relative rounded-2xl p-8 sm:p-12 md:p-16 hero-container-shadow max-w-7xl mx-auto mt-3 sm:mt-4 mb-8 overflow-hidden animate-fade-in-up border border-slate-300/40">
+        {/* Full-Bleed Auto-Rotating Vivid Background Images */}
+        <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
+          {heroImages.map((src, index) => (
+            <img
+              key={src}
+              src={src}
+              alt="Mandi Procurement"
+              className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${
+                index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+              }`}
+            />
+          ))}
+          {/* Dark Gradient Scrim: Deep contrast on the left & bottom where text sits, allowing photography to shine through */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+        </div>
 
-        <div className="relative max-w-3xl space-y-6">
-          {/* Department Badge: Light Red Tint #FDECEA background, Red Text, Red Border */}
-          <div className="inline-flex items-center space-x-2 badge-red-light border border-red-200/70 text-gov-red text-xs font-bold font-heading px-3.5 py-1.5 rounded-full shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-gov-red animate-pulse"></span>
-            <span>Department of Consumer Affairs • Official Procurement Portal</span>
+        <div className="relative z-10 max-w-3xl space-y-6">
+          {/* Department Badge: Frosted Glass / Translucent White pill with bright red pulse */}
+          <div className="inline-flex items-center space-x-2 bg-white/15 backdrop-blur-md border border-white/30 text-white text-xs font-bold font-heading px-3.5 py-1.5 rounded-full shadow-md">
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
+            <span className="tracking-wide">Department of Consumer Affairs • Official Procurement Portal</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gov-text leading-tight tracking-tight">
+          {/* Hero Title: Crisp White Font with Subtle Drop Shadow */}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-white leading-tight tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
             {t('home.hero_title')}
           </h1>
 
-          <p className="text-base sm:text-lg text-gov-muted leading-relaxed">
+          {/* Hero Subtitle: High Legibility White/Slate Tint */}
+          <p className="text-base sm:text-lg text-slate-100/95 leading-relaxed font-normal drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
             {t('home.hero_subtitle')}
           </p>
 
           <div className="pt-2 flex flex-col sm:flex-row items-center gap-4 font-heading">
-            {/* 2. Primary Red CTA: solid #C62828 red, text #FFFFFF, shadow + hover lift */}
+            {/* 2. Primary Red CTA: Vivid Solid Red with Shadow Elevation */}
             <Link
               to="/dashboard"
-              className="w-full sm:w-auto px-7 py-3.5 btn-primary-red font-bold text-sm rounded-lg flex items-center justify-center space-x-2 transition-all"
+              className="w-full sm:w-auto px-7 py-3.5 bg-[#d32f2f] hover:bg-[#b71c1c] text-white font-bold text-sm rounded-lg flex items-center justify-center space-x-2 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               <span>{t('home.book_slot_now')}</span>
               <ArrowRight className="w-4 h-4 text-white" />
             </Link>
 
-            {/* 2. Secondary Red Outline CTA: white bg, border 1.5px solid #C62828, text #C62828 */}
+            {/* 2. Secondary CTA: Frosted Glass / Translucent Backdrop */}
             <Link
               to="/live-queue"
-              className="w-full sm:w-auto px-7 py-3.5 btn-secondary-red font-semibold text-sm rounded-lg flex items-center justify-center space-x-2 transition-all"
+              className="w-full sm:w-auto px-7 py-3.5 bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/40 text-white font-semibold text-sm rounded-lg flex items-center justify-center space-x-2 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
-              <Clock className="w-4 h-4 text-gov-red" />
+              <Clock className="w-4 h-4 text-white" />
               <span>{t('home.view_live_queue')}</span>
             </Link>
           </div>
@@ -116,8 +148,8 @@ const HomePage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: Zero Queue Wait Times */}
-          <div className="bg-white p-6 rounded-xl border border-gov-border card-hover-elevate border-l-4 border-l-gov-red space-y-4 overflow-hidden">
-            <div className="w-13 h-13 rounded-xl badge-red-light ring-2 ring-red-100/80 shadow-xs flex items-center justify-center">
+          <div className="group bg-white p-6 rounded-xl border border-gov-border border-l-4 border-l-gov-red space-y-4 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
+            <div className="w-13 h-13 rounded-xl badge-red-light ring-2 ring-red-100/80 shadow-xs flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
               <Clock className="w-6 h-6 text-gov-red" />
             </div>
             <h3 className="text-lg font-bold font-heading text-gov-text">{t('home.feat1_title')}</h3>
@@ -125,8 +157,8 @@ const HomePage = () => {
           </div>
 
           {/* Card 2: SMS & Live Alerts */}
-          <div className="bg-white p-6 rounded-xl border border-gov-border card-hover-elevate border-l-4 border-l-gov-red space-y-4 overflow-hidden">
-            <div className="w-13 h-13 rounded-xl badge-red-light ring-2 ring-red-100/80 shadow-xs flex items-center justify-center">
+          <div className="group bg-white p-6 rounded-xl border border-gov-border border-l-4 border-l-gov-red space-y-4 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
+            <div className="w-13 h-13 rounded-xl badge-red-light ring-2 ring-red-100/80 shadow-xs flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
               <MessageSquare className="w-6 h-6 text-gov-red" />
             </div>
             <h3 className="text-lg font-bold font-heading text-gov-text">{t('home.feat2_title')}</h3>
@@ -134,8 +166,8 @@ const HomePage = () => {
           </div>
 
           {/* Card 3: Transparent Direct Payment (Success State Card) */}
-          <div className="bg-white p-6 rounded-xl border border-gov-border card-hover-elevate border-l-4 border-l-gov-green space-y-4 overflow-hidden">
-            <div className="w-13 h-13 rounded-xl badge-green-light ring-2 ring-green-100/80 shadow-xs flex items-center justify-center">
+          <div className="group bg-white p-6 rounded-xl border border-gov-border border-l-4 border-l-gov-green space-y-4 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
+            <div className="w-13 h-13 rounded-xl badge-green-light ring-2 ring-green-100/80 shadow-xs flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
               <ShieldCheck className="w-6 h-6 text-gov-green" />
             </div>
             <h3 className="text-lg font-bold font-heading text-gov-text">{t('home.feat3_title')}</h3>
@@ -153,7 +185,7 @@ const HomePage = () => {
           {/* Section Header & Centre Selector */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gov-border pb-4">
             <div>
-              <div className="inline-flex items-center space-x-1.5 badge-red-light px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase font-heading text-gov-red mb-1">
+              <div className="inline-flex items-center space-x-1.5 badge-red-light px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase font-heading text-gov-red mb-1 shadow-2xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-gov-red animate-pulse"></span>
                 <span>Real-Time Mandi Live Feed</span>
               </div>
@@ -173,7 +205,7 @@ const HomePage = () => {
               <select
                 value={selectedCentreId}
                 onChange={(e) => setSelectedCentreId(e.target.value)}
-                className="px-3 py-2 bg-gov-gray border border-gov-border rounded-lg text-xs font-bold text-gov-text focus:ring-2 focus:ring-gov-red focus:outline-none shadow-2xs"
+                className="px-3 py-2 bg-gov-gray border border-gov-border rounded-lg text-xs font-bold text-gov-text focus:ring-2 focus:ring-gov-red focus:outline-none shadow-2xs cursor-pointer hover:bg-slate-100 transition-colors"
               >
                 {centres.map((c) => (
                   <option key={c._id} value={c._id}>
@@ -195,9 +227,10 @@ const HomePage = () => {
           {queueData && (
             <div className="space-y-6">
               {/* Currently Serving Box */}
-              <div className="bg-gradient-to-br from-white via-red-50/30 to-[#FDF6F6] border border-red-200 rounded-xl p-6 text-center space-y-2">
-                <div className="inline-block bg-gov-red text-white font-bold font-heading text-[10px] px-3.5 py-1 rounded-full tracking-wider uppercase shadow-2xs">
-                  Currently Serving Token at Counter
+              <div className="bg-gradient-to-br from-white via-red-50/30 to-[#FDF6F6] border border-red-200 rounded-xl p-6 text-center space-y-2 shadow-2xs">
+                <div className="inline-flex items-center space-x-1.5 bg-gov-red text-white font-bold font-heading text-[10px] px-3.5 py-1 rounded-full tracking-wider uppercase shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                  <span>Currently Serving Token at Counter</span>
                 </div>
 
                 {queueData.currentlyServing ? (
@@ -222,24 +255,45 @@ const HomePage = () => {
 
               {/* 4 Quick Metrics Cards */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center font-heading">
-                <div className="bg-gov-gray p-3.5 rounded-xl border border-gov-border shadow-2xs">
+                {/* 1. Total Booked Today */}
+                <div className="cursor-default bg-gov-gray hover:bg-slate-100 p-3.5 rounded-xl border border-gov-border hover:border-gov-red/40 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
                   <div className="text-xs text-gov-muted">Total Booked Today</div>
                   <div className="text-xl font-bold text-gov-text mt-0.5">{queueData.summary?.totalTotalBooked || 0}</div>
                 </div>
-                <div className="bg-amber-50 p-3.5 rounded-xl border border-amber-200 shadow-2xs">
-                  <div className="text-xs text-amber-900 font-semibold">Checked-In & Waiting</div>
+
+                {/* 2. Checked-In & Waiting */}
+                <div
+                  onClick={() => {
+                    const el = document.getElementById('checked-in-waiting-list');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                  }}
+                  className="cursor-pointer bg-amber-50 hover:bg-amber-100 p-3.5 rounded-xl border border-amber-200 hover:border-amber-300 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+                  title="Click to view waiting list"
+                >
+                  <div className="text-xs text-amber-900 font-semibold group-hover:text-amber-950 transition-colors">Checked-In & Waiting</div>
                   <div className="text-xl font-bold text-amber-900 mt-0.5">{queueData.summary?.checkedInWaitingCount || 0}</div>
                 </div>
-                <div className="bg-green-50 p-3.5 rounded-xl border border-green-300 shadow-2xs">
+
+                {/* 3. Completed Today */}
+                <div
+                  onClick={() => {
+                    const el = document.getElementById('completed-today-list');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                  }}
+                  className="cursor-pointer bg-green-50 hover:bg-green-100 p-3.5 rounded-xl border border-green-300 hover:border-green-400 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+                  title="Click to view completed list"
+                >
                   <div className="text-xs text-green-900 font-bold flex items-center justify-center space-x-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-green-700" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-green-700 group-hover:scale-110 transition-transform" />
                     <span>Completed Today</span>
                   </div>
                   <div className="text-xl font-black text-gov-green mt-0.5">
                     {queueData.summary?.completedCount || 0}
                   </div>
                 </div>
-                <div className="bg-gov-gray p-3.5 rounded-xl border border-gov-border shadow-2xs">
+
+                {/* 4. Queue Date */}
+                <div className="cursor-default bg-gov-gray hover:bg-slate-100 p-3.5 rounded-xl border border-gov-border hover:border-gov-red/40 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
                   <div className="text-xs text-gov-muted">Queue Date</div>
                   <div className="text-xs font-bold text-gov-text mt-1">{queueData.date}</div>
                 </div>
@@ -248,7 +302,7 @@ const HomePage = () => {
               {/* Waiting & Completed Lists Preview */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Checked-In Waiting List */}
-                <div className="p-4 rounded-xl border border-gov-border bg-slate-50/50 space-y-3">
+                <div id="checked-in-waiting-list" className="p-4 rounded-xl border border-gov-border bg-slate-50/50 space-y-3">
                   <div className="flex justify-between items-center border-b border-gov-border pb-2 font-heading">
                     <span className="text-xs font-bold text-amber-900 flex items-center space-x-1">
                       <Clock className="w-3.5 h-3.5 text-amber-700" />
@@ -264,7 +318,7 @@ const HomePage = () => {
                       <p className="text-xs text-gov-muted text-center py-3">No checked-in farmers waiting in line.</p>
                     ) : (
                       queueData.checkedInWaiting?.slice(0, 4).map((item) => (
-                        <div key={item._id} className="p-2.5 bg-white rounded-lg border border-amber-200 flex justify-between items-center text-xs">
+                        <div key={item._id} className="p-2.5 bg-white hover:bg-slate-50 rounded-lg border border-amber-200 flex justify-between items-center text-xs transition-colors shadow-2xs">
                           <div>
                             <span className="font-mono font-bold text-slate-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
                               {item.tokenNumber}
@@ -281,7 +335,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Completed Today List */}
-                <div className="p-4 rounded-xl border border-gov-border bg-slate-50/50 space-y-3">
+                <div id="completed-today-list" className="p-4 rounded-xl border border-gov-border bg-slate-50/50 space-y-3">
                   <div className="flex justify-between items-center border-b border-gov-border pb-2 font-heading">
                     <span className="text-xs font-bold text-gov-green flex items-center space-x-1">
                       <CheckCircle2 className="w-3.5 h-3.5 text-gov-green" />
@@ -297,7 +351,7 @@ const HomePage = () => {
                       <p className="text-xs text-gov-muted text-center py-3">No completed tickets yet today.</p>
                     ) : (
                       queueData.completedToday?.slice(0, 4).map((item) => (
-                        <div key={item._id} className="p-2.5 bg-white rounded-lg border border-green-200 flex justify-between items-center text-xs">
+                        <div key={item._id} className="p-2.5 bg-white hover:bg-slate-50 rounded-lg border border-green-200 flex justify-between items-center text-xs transition-colors shadow-2xs">
                           <div>
                             <span className="font-mono font-bold text-gov-green bg-green-50 px-2 py-0.5 rounded border border-green-200">
                               {item.tokenNumber}
@@ -351,23 +405,38 @@ const HomePage = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {centres.map((c) => (
               <div
                 key={c._id}
-                className="p-5 rounded-xl bg-gov-gray border border-gov-border space-y-2.5 card-hover-elevate hover:border-gov-red transition-all"
+                className="group p-5 rounded-xl bg-gov-gray border border-gov-border space-y-3 shadow-2xs hover:shadow-md hover:border-gov-red/50 hover:-translate-y-0.5 transition-all duration-200"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold font-heading badge-red-light px-2.5 py-0.5 rounded border border-red-200">
+                  <span className="text-xs font-bold font-heading badge-red-light px-2.5 py-0.5 rounded-md border border-red-200 shadow-2xs">
                     {c.code}
                   </span>
-                  <span className="text-xs text-gov-muted">{c.district}, {c.state}</span>
+                  <span className="text-xs text-gov-muted font-medium">{c.district}, {c.state}</span>
                 </div>
-                <h4 className="font-bold font-heading text-sm text-gov-text">{c.name}</h4>
-                <p className="text-xs text-gov-muted">Capacity: <span className="font-semibold text-gov-text">{c.dailyCapacityQuintals} Qtl/day</span></p>
-                <div className="pt-2 flex flex-wrap gap-1.5">
+                <h4 className="font-bold font-heading text-sm text-gov-text group-hover:text-gov-red transition-colors">{c.name}</h4>
+                
+                {/* Capacity Progress Bar */}
+                <div className="space-y-1.5 pt-0.5">
+                  <div className="flex justify-between items-center text-xs text-gov-muted">
+                    <span>Daily Capacity:</span>
+                    <span className="font-bold text-gov-text">{c.dailyCapacityQuintals} Qtl/day</span>
+                  </div>
+                  <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                    <div
+                      className="bg-gov-red h-1.5 rounded-full transition-all duration-500"
+                      style={{ width: `${Math.min(100, Math.max(25, (c.dailyCapacityQuintals / 3000) * 100))}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Crop Tags */}
+                <div className="pt-2 flex flex-wrap gap-1.5 border-t border-gov-border/60">
                   {c.supportedCrops?.map((crop) => (
-                    <span key={crop} className="text-[11px] bg-white border border-gov-border text-gov-text px-2 py-0.5 rounded font-medium">
+                    <span key={crop} className="text-[11px] bg-slate-100 border border-slate-200 text-slate-600 px-2 py-0.5 rounded-full font-medium shadow-2xs">
                       {crop}
                     </span>
                   ))}

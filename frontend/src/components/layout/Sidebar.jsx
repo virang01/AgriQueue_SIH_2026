@@ -57,7 +57,7 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }) => {
       </div>
 
       {/* Navigation List */}
-      <nav className="flex-1 overflow-y-auto p-3 space-y-1">
+      <nav className="flex-1 overflow-y-auto p-3 space-y-1.5">
         {menuItems.map((item) => {
           const Icon = item.icon;
           const isDashboardRoot = item.path === '/dashboard';
@@ -69,22 +69,22 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }) => {
               end={isDashboardRoot}
               onClick={() => setMobileOpen && setMobileOpen(false)}
               className={({ isActive }) =>
-                `group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-heading transition-all duration-150 focus:outline-none ${
+                `group flex items-center justify-between px-3.5 py-2.5 rounded-r-xl rounded-l-xs text-xs font-heading transition-all duration-150 focus:outline-none ${
                   isActive
-                    ? 'bg-red-100/90 border border-red-300 text-gov-red font-bold shadow-2xs scale-[1.01]'
-                    : 'text-slate-900 font-semibold bg-transparent hover:bg-slate-100 hover:text-gov-red active:bg-slate-200'
+                    ? 'bg-red-50 text-gov-red font-bold border-l-4 border-gov-red'
+                    : 'text-slate-900 font-semibold bg-transparent border-l-4 border-transparent hover:bg-slate-100 hover:text-gov-red active:bg-slate-200'
                 }`
               }
             >
               {({ isActive }) => (
                 <>
                   <div className="flex items-center space-x-3">
-                    <Icon className={`w-4 h-4 transition-colors ${isActive ? 'text-gov-red font-bold' : 'text-gov-red group-hover:text-gov-red'}`} />
+                    <Icon className={`w-4 h-4 transition-colors ${isActive ? 'text-gov-red' : 'text-slate-500 group-hover:text-gov-red'}`} />
                     <span className={`transition-colors ${isActive ? 'text-gov-red font-bold' : 'text-slate-900 group-hover:text-gov-red'}`}>
                       {t(item.labelKey)}
                     </span>
                   </div>
-                  {isActive && <ChevronRight className="w-3.5 h-3.5 text-gov-red font-bold" />}
+                  {isActive && <ChevronRight className="w-3.5 h-3.5 text-gov-red opacity-70" />}
                 </>
               )}
             </NavLink>
@@ -103,7 +103,7 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }) => {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden md:block w-64 flex-shrink-0 h-[calc(100vh-65px)] sticky top-[65px]">
+      <aside className="hidden md:block w-64 flex-shrink-0 h-[calc(100vh-var(--navbar-height,104px))] sticky top-[var(--navbar-height,104px)]">
         {navContent}
       </aside>
 
