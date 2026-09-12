@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { KeyRound, Phone, LogIn, Sparkles } from 'lucide-react';
+import logoIcon from '../assets/logo-icon.png';
 
 const LoginPage = () => {
   const { t } = useTranslation();
@@ -45,17 +46,22 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto my-14 px-4 font-body text-gov-text bg-white animate-fade-in-up">
+    <div className="max-w-md mx-auto my-12 px-4 font-body text-gov-text bg-white animate-fade-in-up">
       <div className="bg-white rounded-2xl border border-gov-border hero-container-shadow overflow-hidden border-t-4 border-t-gov-red">
-        <div className="bg-gradient-to-br from-white via-red-50/20 to-[#FDF6F6] p-6 text-center space-y-1 border-b border-gov-border relative overflow-hidden">
-          <div className="w-12 h-12 bg-gov-red rounded-xl mx-auto flex items-center justify-center text-xl shadow-xs text-white">
-            🌾
+        {/* Header Branding */}
+        <div className="bg-gradient-to-br from-white via-red-50/20 to-[#FDF6F6] p-7 text-center space-y-2 border-b border-gov-border relative overflow-hidden">
+          <img src={logoIcon} alt="AgriQueue logo" className="w-14 h-14 object-contain mx-auto" />
+          <div>
+            <div className="text-xl font-black font-heading tracking-tight leading-tight">
+              <span className="text-emerald-800">Agri</span><span className="text-gov-red">Queue</span>
+            </div>
+            <h1 className="text-base font-bold font-heading text-gov-text mt-0.5">{t('auth.login_title')}</h1>
           </div>
-          <h2 className="text-xl font-bold font-heading text-gov-text">{t('auth.login_title')}</h2>
-          <p className="text-xs text-gov-muted">Department of Consumer Affairs Procurement Portal</p>
+          <p className="text-xs text-gov-muted">Department of Consumer Affairs • Direct Procurement Portal</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        {/* Login Form */}
+        <form onSubmit={handleSubmit} className="p-7 space-y-5">
           {error && (
             <div className="p-3 bg-red-50 border border-red-200 text-gov-red text-xs rounded-lg font-semibold">
               {error}
@@ -65,14 +71,14 @@ const LoginPage = () => {
           <div>
             <label className="block text-xs font-semibold text-gov-text mb-1">{t('auth.phone')} *</label>
             <div className="relative">
-              <Phone className="w-4 h-4 text-gov-muted absolute left-3 top-3.5" />
+              <Phone className="w-4 h-4 absolute left-3.5 top-3.5 text-gov-muted" />
               <input
                 type="text"
                 required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="e.g. 9876543210"
-                className="w-full pl-9 pr-3 py-3 bg-gov-gray border border-gov-border rounded-lg text-sm text-gov-text focus:ring-2 focus:ring-gov-red focus:outline-none"
+                className="w-full pl-10 pr-3 py-3 bg-gov-gray border border-gov-border rounded-lg text-sm text-gov-text focus:ring-2 focus:ring-gov-red focus:border-gov-red focus:outline-none transition-all duration-150"
               />
             </div>
           </div>
@@ -80,35 +86,28 @@ const LoginPage = () => {
           <div>
             <label className="block text-xs font-semibold text-gov-text mb-1">{t('auth.password')} *</label>
             <div className="relative">
-              <KeyRound className="w-4 h-4 text-gov-muted absolute left-3 top-3.5" />
+              <KeyRound className="w-4 h-4 absolute left-3.5 top-3.5 text-gov-muted" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-9 pr-3 py-3 bg-gov-gray border border-gov-border rounded-lg text-sm text-gov-text focus:ring-2 focus:ring-gov-red focus:outline-none"
+                className="w-full pl-10 pr-3 py-3 bg-gov-gray border border-gov-border rounded-lg text-sm text-gov-text focus:ring-2 focus:ring-gov-red focus:border-gov-red focus:outline-none transition-all duration-150"
               />
             </div>
           </div>
 
-          {/* Primary CTA: Solid Red #C62828, White Text #FFFFFF */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 btn-primary-red font-bold font-heading text-sm rounded-lg shadow-xs flex items-center justify-center space-x-2 transition-all"
+            className="w-full py-3.5 btn-primary-red font-bold font-heading text-sm rounded-lg shadow-xs flex items-center justify-center space-x-2 transition-colors"
           >
-            {loading ? (
-              <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-            ) : (
-              <>
-                <LogIn className="w-4 h-4 text-white" />
-                <span>{t('auth.login_btn')}</span>
-              </>
-            )}
+            <LogIn className="w-4 h-4 text-white" />
+            <span>{loading ? 'Logging in...' : t('auth.login_btn')}</span>
           </button>
 
-          <div className="text-center pt-2">
+          <div className="text-center pt-1">
             <span className="text-xs text-gov-muted">New farmer user? </span>
             <Link to="/register" className="text-xs font-bold font-heading text-gov-red hover:underline">
               {t('auth.register_title')}
@@ -116,8 +115,8 @@ const LoginPage = () => {
           </div>
 
           {/* Quick Demo Login Preset Buttons */}
-          <div className="pt-6 border-t border-gov-border">
-            <div className="flex items-center space-x-1 text-xs font-bold font-heading text-gov-text mb-2">
+          <div className="pt-4 border-t border-gov-border">
+            <div className="flex items-center space-x-1.5 text-xs font-bold font-heading text-gov-text mb-2">
               <Sparkles className="w-3.5 h-3.5 text-gov-red" />
               <span>Instant One-Click Role Login</span>
             </div>
@@ -125,36 +124,34 @@ const LoginPage = () => {
               <button
                 type="button"
                 onClick={() => handleDemoFill('9876543211')}
-                className="col-span-2 px-2.5 py-2 bg-gov-gray text-gov-text border border-gov-border rounded-lg font-semibold hover:border-gov-red hover:bg-[#FDECEA] text-left transition-all hover:shadow-xs flex items-center justify-between"
+                className="col-span-2 px-3 py-2 bg-gov-gray hover:bg-red-50 border border-gov-border hover:border-gov-red rounded-lg text-left transition-colors flex items-center justify-between"
               >
-                <div>🌾 Farmer</div>
-                <div className="text-[10px] text-gov-muted font-normal">9876543211</div>
+                <span className="font-semibold text-gov-text">🌾 Farmer (Suresh Patel)</span>
+                <span className="text-[11px] text-gov-muted font-mono">9876543211</span>
               </button>
-
               <button
                 type="button"
                 onClick={() => handleDemoFill('7777777777')}
-                className="px-2.5 py-2 bg-gov-gray text-gov-text border border-gov-border rounded-lg font-semibold hover:border-gov-red hover:bg-[#FDECEA] text-left transition-all hover:shadow-xs"
+                className="px-3 py-2 bg-gov-gray hover:bg-red-50 border border-gov-border hover:border-gov-red rounded-lg text-left transition-colors"
               >
-                <div>📋 Centre Staff</div>
-                <div className="text-[10px] text-gov-muted font-normal">7777777777</div>
+                <div className="font-semibold text-gov-text">📋 Centre Staff</div>
+                <div className="text-[10px] text-gov-muted font-mono">7777777777</div>
               </button>
-
               <button
                 type="button"
                 onClick={() => handleDemoFill('8888888888')}
-                className="px-2.5 py-2 bg-gov-gray text-gov-text border border-gov-border rounded-lg font-semibold hover:border-gov-red hover:bg-[#FDECEA] text-left transition-all hover:shadow-xs"
+                className="px-3 py-2 bg-gov-gray hover:bg-red-50 border border-gov-border hover:border-gov-red rounded-lg text-left transition-colors"
               >
-                <div>🏢 Centre Manager</div>
-                <div className="text-[10px] text-gov-muted font-normal">8888888888</div>
+                <div className="font-semibold text-gov-text">🏢 Centre Manager</div>
+                <div className="text-[10px] text-gov-muted font-mono">8888888888</div>
               </button>
-
               <button
                 type="button"
                 onClick={() => handleDemoFill('9999999999')}
-                className="col-span-2 px-2.5 py-2 bg-gov-gray text-gov-text border border-gov-border rounded-lg font-semibold hover:border-gov-red hover:bg-[#FDECEA] text-center transition-all hover:shadow-xs"
+                className="col-span-2 px-3 py-2 bg-gov-gray hover:bg-red-50 border border-gov-border hover:border-gov-red rounded-lg text-left transition-colors flex items-center justify-between"
               >
-                🏛️ Govt Admin (National Command) - 9999999999
+                <span className="font-semibold text-gov-text">🏛️ Govt Admin (National)</span>
+                <span className="text-[11px] text-gov-muted font-mono">9999999999</span>
               </button>
             </div>
           </div>

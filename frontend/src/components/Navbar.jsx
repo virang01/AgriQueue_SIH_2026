@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Globe, User, LogOut, Menu, X } from 'lucide-react';
+import logoIcon from '../assets/logo-icon.png';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
@@ -36,31 +37,90 @@ const Navbar = () => {
   return (
     <header className="bg-white border-b border-gov-border sticky top-0 z-50 nav-shadow-divider font-body">
       {/* Top Official Government Banner */}
-      <div className="bg-gov-gray border-b border-gov-border text-gov-muted px-4 py-1.5 text-xs flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <span className="font-semibold text-gov-red">🇮🇳 {t('ministry_title')}</span>
-          <span className="hidden sm:inline text-gov-border">|</span>
-          <span className="hidden sm:inline">{t('department_title')}</span>
+      <div className="bg-gov-gray border-b border-gov-border text-gov-muted px-4 py-1.5 text-xs flex justify-between items-center overflow-hidden">
+        {/* Scrolling News / Info Ticker */}
+        <div className="flex-1 overflow-hidden mr-4 relative" aria-hidden="true">
+          <div className="animate-ticker-scroll whitespace-nowrap text-xs font-medium text-gov-muted">
+            {/* First sequence */}
+            <div className="inline-flex items-center space-x-3 pr-6">
+              <span>🇮🇳 Ministry of Consumer Affairs, Food & Public Distribution</span>
+              <span className="text-slate-400">•</span>
+              <span>Department of Consumer Affairs, Government of India</span>
+              <span className="text-slate-400">•</span>
+              <span>National Procurement & Live Queue Portal — Official Platform</span>
+              <span className="text-slate-400">•</span>
+              <span>Toll-Free Farmer Helpline: 1800-180-1551</span>
+              <span className="text-slate-400">•</span>
+              <span>Direct Benefit Transfer (DBT) Verified for All Payments</span>
+              <span className="text-slate-400">•</span>
+              <span>10 Active Procurement Centres Currently Operational Nationwide</span>
+              <span className="text-slate-400">•</span>
+              <span>Real-Time Token Tracking Available at All Registered Mandis</span>
+              <span className="text-slate-400">•</span>
+              <span>Multi-Language Support Available in Hindi and English</span>
+              <span className="text-slate-400">•</span>
+              <span>Minimum Support Price (MSP) Procurement as per Government Norms</span>
+              <span className="text-slate-400">•</span>
+              <span>Report Grievances via Centre Staff or National Helpline</span>
+              <span className="text-slate-400">•</span>
+              <span>Aadhaar-Linked Farmer Registration for Secure Verification</span>
+              <span className="text-slate-400">•</span>
+              <span>Data Privacy & Security Ensured under Government IT Guidelines</span>
+              <span className="text-slate-400">•</span>
+            </div>
+
+            {/* Seamless duplicate sequence for continuous loop */}
+            <div className="inline-flex items-center space-x-3 pr-6">
+              <span>Ministry of Consumer Affairs, Food & Public Distribution</span>
+              <span className="text-slate-400">•</span>
+              <span>Department of Consumer Affairs, Government of India</span>
+              <span className="text-slate-400">•</span>
+              <span>National Procurement & Live Queue Portal — Official Platform</span>
+              <span className="text-slate-400">•</span>
+              <span>Toll-Free Farmer Helpline: 1800-180-1551</span>
+              <span className="text-slate-400">•</span>
+              <span>Direct Benefit Transfer (DBT) Verified for All Payments</span>
+              <span className="text-slate-400">•</span>
+              <span>10 Active Procurement Centres Currently Operational Nationwide</span>
+              <span className="text-slate-400">•</span>
+              <span>Real-Time Token Tracking Available at All Registered Mandis</span>
+              <span className="text-slate-400">•</span>
+              <span>Multi-Language Support Available in Hindi and English</span>
+              <span className="text-slate-400">•</span>
+              <span>Minimum Support Price (MSP) Procurement as per Government Norms</span>
+              <span className="text-slate-400">•</span>
+              <span>Report Grievances via Centre Staff or National Helpline</span>
+              <span className="text-slate-400">•</span>
+              <span>Aadhaar-Linked Farmer Registration for Secure Verification</span>
+              <span className="text-slate-400">•</span>
+              <span>Data Privacy & Security Ensured under Government IT Guidelines</span>
+              <span className="text-slate-400">•</span>
+            </div>
+          </div>
         </div>
-        <div className="flex items-center space-x-2">
-          <div className="flex items-center space-x-1 bg-white p-1 rounded-xl border border-gov-border text-xs shadow-2xs relative">
+
+        {/* Fixed Right-Side Language Switcher */}
+        <div className="flex-shrink-0 flex items-center space-x-2 z-10 pl-2 bg-gov-gray">
+          <div className="flex items-center space-x-1 bg-white p-1.5 rounded-xl border border-gov-border text-xs shadow-2xs relative">
             <Globe className="w-3.5 h-3.5 text-gov-red ml-1" />
             <button
               onClick={() => handleLanguageToggle('hi')}
-              className={`px-3 py-1 font-heading transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gov-red after:rounded-full after:transition-all after:duration-300 ${i18n.language?.startsWith('hi')
+              className={`px-3 py-1 font-heading transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gov-red after:rounded-full after:transition-all after:duration-300 ${
+                i18n.language?.startsWith('hi')
                   ? 'text-[#c62828] font-black after:w-full'
                   : 'text-slate-900 font-bold hover:text-[#c62828] after:w-0 hover:after:w-full'
-                }`}
+              }`}
             >
               हिन्दी
             </button>
             <span className="text-slate-400 font-bold">/</span>
             <button
               onClick={() => handleLanguageToggle('en')}
-              className={`px-3 py-1 font-heading transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gov-red after:rounded-full after:transition-all after:duration-300 ${!i18n.language?.startsWith('hi')
+              className={`px-3 py-1 font-heading transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-gov-red after:rounded-full after:transition-all after:duration-300 ${
+                !i18n.language?.startsWith('hi')
                   ? 'text-[#c62828] font-black after:w-full'
                   : 'text-slate-900 font-bold hover:text-[#c62828] after:w-0 hover:after:w-full'
-                }`}
+              }`}
             >
               English
             </button>
@@ -72,15 +132,17 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo & Title */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 bg-gov-red rounded-xl flex items-center justify-center font-bold text-white shadow-xs group-hover:bg-gov-red-hover group-hover:scale-105 transition-all">
-              🌾
-            </div>
-            <div>
-              <span className="text-xl font-bold font-heading tracking-tight text-gov-text block leading-tight">
-                {t('app_name')}
+          <Link to="/" className="flex items-center space-x-3.5 group">
+            <img
+              src={logoIcon}
+              alt="AgriQueue logo"
+              className="w-20 h-22 object-contain flex-shrink-0 group-hover:scale-105 transition-transform duration-200"
+            />
+            <div className="flex flex-col justify-center">
+              <span className="text-xl font-black font-heading tracking-tight block leading-none">
+                <span className="text-emerald-800">Agri</span><span className="text-gov-red">Queue</span>
               </span>
-              <span className="text-xs text-gov-muted block font-medium">
+              <span className="text-[11px] text-gov-muted block font-medium mt-1">
                 National Procurement & Live Queue Portal
               </span>
             </div>

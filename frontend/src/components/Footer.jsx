@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Phone, Mail, ShieldCheck, ExternalLink } from 'lucide-react';
+import logoIcon from '../assets/logo-icon.png';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -9,9 +10,11 @@ const Footer = () => {
     <footer className="bg-gov-gray text-gov-text border-t border-gov-border pt-10 pb-6 mt-16 font-body">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <div className="flex items-center space-x-2 mb-3">
-            <span className="text-2xl">🌾</span>
-            <span className="font-bold font-heading text-lg text-gov-text">AgriQueue Digital Platform</span>
+          <div className="flex items-center space-x-2.5 mb-3">
+            <img src={logoIcon} alt="AgriQueue logo" className="w-9 h-9 object-contain" />
+            <span className="font-bold font-heading text-lg text-gov-text">
+              <span className="text-emerald-800">Agri</span><span className="text-gov-red">Queue</span> Digital Platform
+            </span>
           </div>
           <p className="text-xs text-gov-muted leading-relaxed">
             An official initiative by the Department of Consumer Affairs, Ministry of Consumer Affairs, Food & Public Distribution, Government of India, to streamline grain procurement schedules and assure direct MSP payment distribution.
